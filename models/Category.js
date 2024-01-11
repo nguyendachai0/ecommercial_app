@@ -1,18 +1,19 @@
-// models/Category.js
+// models/Categorie.js
 const fs = require('fs');
 
 class Category {
     constructor() {
         this.categories = this.loadCategories();
     }
-
+    
     loadCategories() {
         const data = fs.readFileSync('database/categories.json', 'utf8');
-        return JSON.parse(data);
+        const parsedData = JSON.parse(data);
+        return parsedData.categories || [];
     }
 
     saveCategories() {
-        const data = JSON.stringify(this.categories, null, 2);
+        const data = JSON.stringify({categories: this.categories}, null, 2);
         fs.writeFileSync('database/categories.json', data, 'utf8');
     }
 
@@ -20,9 +21,17 @@ class Category {
         return this.categories;
     }
 
+   
+
     getCategoryById(categoryId) {
-        return this.categories.find(category => category.id === categoryId);
+        return this.categories.find(category => category.id == categoryId);
     }
+    getLastCategoryId() {
+      if (this.categories.length === 0) {
+          return null; // No categories, return null or handle accordingly
+      }
+      return this.categories[this.categories.length - 1].id;
+  }
 
     addCategory(newCategory) {
         this.categories.push(newCategory);
@@ -30,7 +39,7 @@ class Category {
     }
 
     updateCategory(updatedCategory) {
-        const index = this.categories.findIndex(category => category.id === updatedCategory.id);
+        const index = this.categories.findIndex(category => category.id == updatedCategory.id);
         if (index !== -1) {
             this.categories[index] = updatedCategory;
             this.saveCategories();
@@ -39,7 +48,7 @@ class Category {
 
     deleteCategory(categoryId) {
         this.categories = this.categories.filter(category => category.id !== categoryId);
-        this.saveCategories();
+        this.saveCategories(); 
     }
 }
 

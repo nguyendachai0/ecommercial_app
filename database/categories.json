@@ -1,5 +1,29 @@
-[
-    { "name": "Laptop", "price": 999 },
-    { "name": "Smartphone", "price": 499 }
-    
+{
+  "categories": [
+    {
+      "id": "1",
+      "title": "Electronicst",
+      "description": "Electronicsr"
+    },
+    {
+      "id": 2,
+      "title": "Coat",
+      "description": "Coat"
+    },
+    {
+      "id": "3",
+      "title": "Onewrttt",
+      "description": "Morer"
+    },
+    {
+      "id": 4,
+      "title": "another",
+      "description": "one"
+    },
+    {
+      "id": 5,
+      "title": "d",
+      "description": "d"
+    }
   ]
+}

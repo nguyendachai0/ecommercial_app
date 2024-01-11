@@ -2,10 +2,11 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const homeRoutes = require('./routes/client/Home.js');
+const homeRoutes = require('./routes/client/Home');
 const AuthRoutes = require('./routes/AuthRoutes');
+const AdminRoutes = require ('./routes/admin/Home');
 const expressLayouts = require('express-ejs-layouts');
-
+const AdminCategoryRoutes = require('./routes/admin/AdminCategoryRoutes');
 const app = express();
 const PORT = 3000;
 
@@ -13,7 +14,21 @@ const PORT = 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(expressLayouts);
-app.set('layout', './client/layout')
+app.use((req, res, next) => {
+  if (req.originalUrl.startsWith('/admin')) {
+    // Use admin layout for routes starting with '/admin'
+    res.locals.layout = 'admin/layout';
+    app.locals.base_url = process.env.BASE_URL || 'http://localhost:3000/admin/';
+  } else {
+    // Use client layout for other routes
+    res.locals.layout = 'client/layout';
+  }
+  
+ 
+  next();
+});
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
@@ -50,8 +65,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', AuthRoutes);
 
-// Routes
+
 app.use('/', homeRoutes);
+
+app.use('/',  AdminRoutes);
+app.use('/', AdminCategoryRoutes);
 
 // app.get('/', (req, res) => {
 //   res.render('client/index', {title: 'HomePage'})
