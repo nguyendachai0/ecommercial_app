@@ -1,11 +1,14 @@
 (function ($) {
     "use strict"
 	
-jQuery(".form-valide").validate({
+jQuery(".form-validate").validate({
+    submitHandler: function (form, event) {
+        event.preventDefault();
+        // Rest of the code for handling form submission
+    },
     rules: {
-        "val-username": {
+        "title": {
             required: !0,
-            minlength: 3
         },
         "val-email": {
             required: !0,
@@ -19,8 +22,9 @@ jQuery(".form-valide").validate({
             required: !0,
             equalTo: "#val-password"
         },
-        "val-select2": {
-            required: !0
+        "description": {
+            required: !0,
+            minlength: 3
         },
         "val-select2-multiple": {
             required: !0,
@@ -62,9 +66,8 @@ jQuery(".form-valide").validate({
         }
     },
     messages: {
-        "val-username": {
-            required: "Please enter a username",
-            minlength: "Your username must consist of at least 3 characters"
+        "title": {
+            required: "Please enter a title",
         },
         "val-email": "Please enter a valid email address",
         "val-password": {
@@ -76,7 +79,10 @@ jQuery(".form-valide").validate({
             minlength: "Your password must be at least 5 characters long",
             equalTo: "Please enter the same password as above"
         },
-        "val-select2": "Please select a value!",
+        "description": {
+            required: "Please enter a description",
+            minlength: "The description must be at least 3 characters long"
+        },
         "val-select2-multiple": "Please select at least 2 values!",
         "val-suggestions": "What can we do to become better?",
         "val-skill": "Please select a skill!",

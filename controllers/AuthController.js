@@ -25,10 +25,11 @@ class AuthController {
     if (user && await bcrypt.compare(password, user.password))
      {
       req.session.user = user; 
+      req.session.save();
       res.redirect('/');
     } else {
      
-      res.render('login', { error: 'Invalid username or password', title: 'Login page' });
+      res.render('auth/login', { error: 'Invalid username or password', title: 'Login page' });
     }
   }
     async register(req, res) { 
@@ -51,8 +52,9 @@ class AuthController {
       const newUser = {
         id: nextUserId,
         email: email,
-        password: hashedPassword
-      }
+        password: hashedPassword,
+        role: "user",      
+        }
      
       User.addUser(newUser);
       res.redirect('/login');
@@ -63,8 +65,17 @@ class AuthController {
     }
     }
   logout(req, res) {
-    req.session.destroy(() => {
-      res.redirect('/');
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        // Delete the corresponding session file
+        const sessionFile = path.join(__dirname, 'sessions', `${req.sessionID}.json`);
+        fs.unlinkSync(sessionFile);
+  
+        res.redirect('/login'); // Redirect to the login page after logout
+      }
     });
   }
 }

@@ -47,8 +47,15 @@ class Category {
     }
 
     deleteCategory(categoryId) {
-        this.categories = this.categories.filter(category => category.id !== categoryId);
+        
+        this.categories = this.categories.filter(category => category.id != (categoryId));
         this.saveCategories(); 
+    }
+    getAllCategoryNamesWithIds() {
+        return this.categories.map(category => ({
+            id: category.id,
+            title: category.title,
+        }));
     }
 }
 

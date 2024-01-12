@@ -1,12 +1,11 @@
 const express = require('express');
 const AdminCategoryController = require('../../controllers/admin/AdminCategoryController');
-
 class AdminCategoryRoutes {
   constructor() {
     this.router = express.Router();
     this.configureRoutes();
   }
-
+  
   configureRoutes() {
     this.router.get('/admin/category', AdminCategoryController.renderAdminCategoryPage);
     this.router.post('/admin/category', AdminCategoryController.addCategory);

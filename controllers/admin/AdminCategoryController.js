@@ -39,14 +39,12 @@ class AdminCategoryController {
 }
 
 deleteCategory(req, res) {
-    const categoryId = req.params.id; // Assuming the ID is passed as a parameter
-    res.json(id);
-    // Implement logic to delete the category with the given ID
+    const categoryId = req.body.id; 
     Category.deleteCategory(categoryId);
-
     const updatedCategories = Category.getAllCategories();
-    res.json({ categories: updatedCategories });
+   res.json({ categories: updatedCategories });
+  }
 }
-}
+
   module.exports = new AdminCategoryController();
   

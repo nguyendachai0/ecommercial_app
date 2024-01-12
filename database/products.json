@@ -1,0 +1,37 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Áo",
+      "description": "áo thôi"
+    },
+    {
+      "id": 2,
+      "title": "adsf",
+      "description": "sdfsd"
+    },
+    {
+      "id": 3,
+      "title": "sd",
+      "description": "asd"
+    },
+    {
+      "id": 4,
+      "title": "dfdf",
+      "description": "sdffds"
+    },
+    {
+      "id": 5,
+      "title": "df",
+      "description": "1",
+      "category_id": "2"
+    },
+    {
+      "id": 6,
+      "title": "ter",
+      "description": "ere",
+      "category_id": "2",
+      "image": "C:\\fakepath\\sinh-vat-gyeongseong.jpg"
+    }
+  ]
+}
