@@ -10,6 +10,7 @@ const expressLayouts = require('express-ejs-layouts');
 const AdminCategoryRoutes = require('./routes/admin/AdminCategoryRoutes');
 const AdminProductRoutes = require('./routes/admin/AdminProductRoutes');
 const  FileStore = require('session-file-store')(session);
+
 const app = express();
 const PORT = 3000;
 app.set('view engine', 'ejs');
@@ -36,16 +37,6 @@ app.use(
   })
 );
 
-app.get('/users', (req, res) => {
-  try {
-    const rawData = fs.readFileSync('/database/users.json');
-    const data = JSON.parse(rawData);
-    res.json(data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-});
 app.get('/check-session', (req, res) => {
   if (req.session && req.session.user) {
     res.send(req.session);
@@ -60,7 +51,6 @@ app.use('/', homeRoutes);
 app.use('/',  AdminRoutes);
 app.use('/', AdminCategoryRoutes);
 app.use('/', AdminProductRoutes);
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

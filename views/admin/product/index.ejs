@@ -12,7 +12,8 @@
                     <div class="card-body">
                         <div class="form-validation">
                             <% if ( locals.productToEdit) { %>
-                                <form id="updateProductForm" class="form-validate" action="" method="post">
+                                <form id="updateProductForm" class="form-validate" action="" method="post"
+                                    enctype="multipart/form-data">
                                     <input type="hidden" name="id" id="val-id" value="<%- locals.productToEdit.id %>"
                                         enctype="multipart/form-data">
                                     <% }else{ %>
@@ -51,9 +52,9 @@
                                                                 <span class="text-danger">*</span>
                                                             </label>
                                                             <div class="col-lg-6">
-                                                                <select class="form-control default-select"
-                                                                    id="val-category-id" name="category_id">
-                                                                    <option value="">Please select</option>
+                                                                <select class="form-control" id="val-category-id"
+                                                                    name="category_id">
+                                                                    <option selected value="">Please select</option>
                                                                     <% allCategoryNamesWithIds.forEach(category=> { %>
                                                                         <option value="<%= category.id %>">
                                                                             <%= category.title %>
@@ -73,7 +74,7 @@
                                                                         <span class="input-group-text">Upload</span>
                                                                     </div>
                                                                     <div class="custom-file">
-                                                                        <input id="val-image" name="image" type="file"
+                                                                        <input id="val-image" type="file" name="image"
                                                                             class="custom-file-input" accept="image/*">
                                                                         <label class="custom-file-label">Choose
                                                                             file</label>
@@ -84,8 +85,8 @@
 
                                                     </div>
                                                     <div class="col-lg-8 ml-auto">
-                                                        <button type="submit" class="btn btn-primary"
-                                                            id="submitProduct">
+                                                        <button onclick="addProduct()" type="submit"
+                                                            class="btn btn-primary" id="submitProduct">
                                                             <%- (locals.productToEdit) ? 'Update' : 'Add' %>
                                                         </button>
                                                         <% if(locals.productToEdit) {%>

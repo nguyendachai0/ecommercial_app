@@ -1,12 +1,31 @@
+function addProduct() {
+    const formData = new FormData();
+    formData.append('title', document.getElementById('val-title').value);
+    formData.append('description', document.getElementById('val-description').value);
+    formData.append('category_id', document.getElementById('val-category-id').value);
+    formData.append('image', document.getElementById('val-image').files[0]);
+
+    // Make sure to adjust the URL to match your backend endpoint
+    const apiUrl = '/admin/product';
+
+    fetch(apiUrl, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response data
+        console.log(data);
+    })
+    .catch(error => {
+        // Handle errors
+        console.error(error);
+    });
+}
 
 function updateProductTable(products) {
-   
     const tableBody = $("#productTableBody");
-
-    // Clear existing rows
     tableBody.empty();
-
-    // Rebuild the table with updated data
     products.forEach((product, index) => {
         const row = `
                 <tr>
@@ -54,40 +73,52 @@ function deleteProduct(productId) {
         });
     }
 }
-
 $(document).ready(function () {
-    $("#addProductForm").on("submit", function (event) {
-        event.preventDefault();
-        if ($(this).valid()) {
-        let title = $("#val-title").val();
-        let description = $("#val-description").val();
-        let category_id = $("#val-category-id").val();
-        let image = $("#val-image").val();
-       
-        
-        $.ajax({
-            url: "/admin/product",
-            method: "POST",
-            data: {
-                title: title,
-                description: description,
-                category_id: category_id,
-                image: image,
-            },
-            dataType: 'json',
-            success: function (response) {
-
-                updateProductTable(response.products);
-                $("#val-title").val('');
-                $("#val-description").val('');
-                $("#val-category-id").val('');
-                $("#val-image").val('');
-            },
-        })
-    }
-})
-
-
+//     $("#addProductForm").on("submit", function (event) {
+//         event.preventDefault();
+//         if ($(this).valid()) {
+//         let title = $("#val-title").val();
+//         let description = $("#val-description").val();
+//         let category_id = $("#val-category-id").val();
+//         let image = $("#files")[0].files[0];
+//         console.log(image)
+//         let formData = new FormData();
+//         formData.append("title", title);
+//         formData.append("description", description);
+//         formData.append("category_id", category_id);
+//         //     for(let i = 0; i < image.length; i++){
+//         //         formData.append("images" ,image[i]);
+//         //     }
+//         formData.append("images", image, image.name);  
+//         console.log(formData.get("title"));    
+//         console.log(formData.get("description"));    
+//         console.log(formData.get("category_id"));    
+//         console.log(formData.get("images"));    
+//         $.ajax({    
+//             url: "/admin/product",
+//             method: "POST",
+//             data: formData,
+//             // data: {
+//             //     title: title,
+//             //     description: description,
+//             //     category_id: category_id,
+//             //     image: image
+//             // },
+//             contentType: false,
+//             processData: false,
+//             dataType: 'json',
+//             success: function (response) {
+//                 console.log("fuck yeah")
+//                 updateProductTable(response.products);
+//                 $("#addProductForm")[0].reset();
+//                 $(".custom-file-label").text("Choose file");
+//             },
+//             error: function (err) {
+//                 console.error("Request failed", err);
+//             }
+//         })
+//     }
+// })
     $("#updateProductForm").on("submit", function (event) {
         event.preventDefault();
         if ($(this).valid()) {
@@ -104,14 +135,9 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (response) {
-
                 updateProductTable(response.products);
-                // Clear the form fields
-
             },
         })
     }})
-
-
 }
 )
