@@ -10,11 +10,14 @@ const expressLayouts = require('express-ejs-layouts');
 const AdminCategoryRoutes = require('./routes/admin/AdminCategoryRoutes');
 const AdminProductRoutes = require('./routes/admin/AdminProductRoutes');
 const  FileStore = require('session-file-store')(session);
+const fileUpload = require('express-fileupload');
+
 
 const app = express();
 const PORT = 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(fileUpload());
 app.use(expressLayouts);
 app.use((req, res, next) => {
   if (req.originalUrl.startsWith('/admin')) {

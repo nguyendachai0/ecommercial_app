@@ -1,12 +1,46 @@
 {
   "products": [
     {
-      "id": 1,
-      "category_id": null
+      "id": "1",
+      "title": "nop",
+      "description": "sfd",
+      "category_id": 2,
+      "image": "sinh-vat-gyeongseong.jpg"
     },
     {
       "id": 2,
-      "category_id": null
+      "title": "fds",
+      "description": "sdf",
+      "category_id": 3,
+      "image": "vien-canh-trong-mo.jpg"
+    },
+    {
+      "id": 3,
+      "title": "one",
+      "description": "more ",
+      "category_id": 3,
+      "image": "profile.jpg"
+    },
+    {
+      "id": 4,
+      "title": "check",
+      "description": "sdf",
+      "category_id": 1,
+      "image": "profile.jpg"
+    },
+    {
+      "id": 5,
+      "title": "adf",
+      "description": "adsf",
+      "category_id": 2,
+      "image": "profile.jpg"
+    },
+    {
+      "id": 6,
+      "title": "title",
+      "description": "descrip",
+      "category_id": 4,
+      "image": "sinh-vat-gyeongseong.jpg"
     }
   ]
 }

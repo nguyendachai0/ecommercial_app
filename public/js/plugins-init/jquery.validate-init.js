@@ -63,7 +63,11 @@ jQuery(".form-validate").validate({
         },
         "val-terms": {
             required: !0
+        },
+        "category_id": {
+            required: true
         }
+       
     },
     messages: {
         "title": {
@@ -83,6 +87,7 @@ jQuery(".form-validate").validate({
             required: "Please enter a description",
             minlength: "The description must be at least 3 characters long"
         },
+        "category_id": "Please select a category",
         "val-select2-multiple": "Please select at least 2 values!",
         "val-suggestions": "What can we do to become better?",
         "val-skill": "Please select a skill!",

@@ -14,8 +14,8 @@
                             <% if ( locals.productToEdit) { %>
                                 <form id="updateProductForm" class="form-validate" action="" method="post"
                                     enctype="multipart/form-data">
-                                    <input type="hidden" name="id" id="val-id" value="<%- locals.productToEdit.id %>"
-                                        enctype="multipart/form-data">
+                                    <input type="hidden" name="id" id="val-id" value="<%- locals.productToEdit.id %>">
+
                                     <% }else{ %>
                                         <form id="addProductForm" class="form-validate" action="" method="post"
                                             enctype="multipart/form-data">
@@ -54,10 +54,13 @@
                                                             <div class="col-lg-6">
                                                                 <select class="form-control" id="val-category-id"
                                                                     name="category_id">
-                                                                    <option selected value="">Please select</option>
+                                                                    <option value="">Please select</option>
                                                                     <% allCategoryNamesWithIds.forEach(category=> { %>
-                                                                        <option value="<%= category.id %>">
-                                                                            <%= category.title %>
+                                                                        <option
+                                                                            <%-(locals.productToEdit.category_id==category.id)
+                                                                            ? 'selected' : '' %> value="<%= category.id
+                                                                                %>">
+                                                                                <%= category.title %>
                                                                         </option>
                                                                         <% }); %>
                                                                 </select>
@@ -75,18 +78,25 @@
                                                                     </div>
                                                                     <div class="custom-file">
                                                                         <input id="val-image" type="file" name="image"
-                                                                            class="custom-file-input" accept="image/*">
+                                                                            class="custom-file-input"
+                                                                            value="<%= (locals.productToEdit) ? productToEdit.image : '' %>">
                                                                         <label class="custom-file-label">Choose
                                                                             file</label>
                                                                     </div>
+                                                                    <% if ( locals.productToEdit) { %>
+                                                                        <div class="d-flex align-items-center"><img
+                                                                                src="/uploads/product/<%= locals.productToEdit.image %>"
+                                                                                class="rounded-lg mr-2" width="24"
+                                                                                alt=""></div>
+                                                                        <% } %>
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <div class="col-lg-8 ml-auto">
-                                                        <button onclick="addProduct()" type="submit"
-                                                            class="btn btn-primary" id="submitProduct">
+                                                        <button type="submit" class="btn btn-primary"
+                                                            id="submitProduct">
                                                             <%- (locals.productToEdit) ? 'Update' : 'Add' %>
                                                         </button>
                                                         <% if(locals.productToEdit) {%>
@@ -110,6 +120,8 @@
                                         <th style="width:80px;"><strong>#</strong></th>
                                         <th><strong>TITLE</strong></th>
                                         <th><strong>DESCRIPTION</strong></th>
+                                        <th><strong>CATEGORY</strong></th>
+                                        <th><strong>IMAGE</strong></th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -125,6 +137,17 @@
                                             <td>
                                                 <%= product.description %>
                                             </td>
+                                            <td>
+                                                <%= allCategoryNamesWithIds.find(category=> product.category_id ==
+                                                    category.id).title %>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center"><img
+                                                        src="/uploads/product/<%= product.image %>"
+                                                        class="rounded-lg mr-2" width="24" alt=""></div>
+                                            </td>
+
+
                                             <td>
                                                 <div class="dropdown">
                                                     <button type="button" class="btn btn-success light sharp"

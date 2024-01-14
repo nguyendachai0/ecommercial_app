@@ -1,4 +1,7 @@
 const express = require('express');
+const router = express.Router();
+const fileUpload = require('express-fileupload');
+router.use(fileUpload());
 const AdminProductController = require('../../controllers/admin/AdminProductController');
 class AdminProductRoutes {
   constructor() {
@@ -12,9 +15,7 @@ class AdminProductRoutes {
     this.router.get('/admin/product/edit/:id', AdminProductController.editProduct);
     this.router.post('/admin/product/edit/:id', AdminProductController.updateProduct);
     this.router.post('/admin/product/delete', AdminProductController.deleteProduct);
-    // Add more routes for product administration as needed
   }
-
   getRouter() {
     return this.router;
   }
