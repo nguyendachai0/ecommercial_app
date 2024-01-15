@@ -37,9 +37,7 @@ function updateProductTable(products, allCategoryNamesWithIds) {
     });
 }
 function deleteProduct(productId) {
-    // Confirm the deletion
     if (confirm("Are you sure you want to delete this product?")) {
-        event.preventDefault();
         $.ajax({
             url: "/admin/product/delete",
             method: "POST",
@@ -48,7 +46,7 @@ function deleteProduct(productId) {
             },
             dataType: 'json',
             success: function (response) {
-                updateProductTable(response.products);
+                updateProductTable(response.products, response.allCategoryNamesWithIds);
             },
         });
     }

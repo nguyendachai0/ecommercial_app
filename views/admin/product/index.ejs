@@ -56,8 +56,8 @@
                                                                     name="category_id">
                                                                     <option value="">Please select</option>
                                                                     <% allCategoryNamesWithIds.forEach(category=> { %>
-                                                                        <option
-                                                                            <%-(locals.productToEdit.category_id==category.id)
+                                                                        <option <%-(locals.productToEdit &&
+                                                                            locals.productToEdit.category_id==category.id)
                                                                             ? 'selected' : '' %> value="<%= category.id
                                                                                 %>">
                                                                                 <%= category.title %>

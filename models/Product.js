@@ -38,13 +38,15 @@ class Product {
     updateProduct(updatedProduct) {
         const index = this.products.findIndex(product => product.id == updatedProduct.id);
         if (index !== -1) {
+            const existingImage = this.products[index].image;
+            if (!updatedProduct.image) {
+                updatedProduct.image = existingImage; 
+            }
             this.products[index] = updatedProduct;
             this.saveProducts();
         }
     }
-
     deleteProduct(productId) {
-        
         this.products = this.products.filter(product => product.id != (productId));
         this.saveProducts(); 
     }

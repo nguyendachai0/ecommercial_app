@@ -5,7 +5,18 @@
       "email": "hai@gmail.com",
       "password": "$2b$10$mLEBAh9SbeROQcp.p9eRCekSFZUCObY1LJDJcsmBohQt2YgQ91hrK",
       "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "dachai@gmail.com",
+      "password": "$2b$10$fGF.Fkwd46WC0mGMVEfNFOARa5XKyoAfGkOHR3Yz1.t0oAVTa6oyy",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "email": "alo@gmail.com",
+      "password": "$2b$10$MSp91Jx9c0.ogz2681SEKuqPwHLcA4LlAJ9wWLvwwei49cEs2D2ku",
+      "role": "user"
     }
-  
   ]
 }

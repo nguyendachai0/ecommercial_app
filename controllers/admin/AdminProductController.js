@@ -1,4 +1,3 @@
-
 const Product = require('../../models/Product'); 
 const Category = require('../../models/Category');
 const fileUpload = require('express-fileupload');
@@ -55,41 +54,64 @@ class AdminProductController {
     const formData = req.body;
     const productId = req.params.id; 
     const {id, title, description, category_id } = req.body;
-   
-  const image = req.files.image;
-    const updateProduct = {
-      id: id, 
-      title: title,
-      description: description,
-      category_id: Number(category_id),
-      image: image.name, 
-    };
-    Product.updateProduct(updateProduct);
-    const uploadPath = path.join(projectPath, '/public/uploads/product', image.name);
-    const uploadFold = path.join( projectPath,'/public/uploads/product');
-    if (!fs.existsSync(uploadFold)) {
-      fs.mkdirSync(uploadFold, { recursive: true });
-    }
-    Product.updateProduct(updateProduct);
-  image.mv(uploadPath, (err) => {
-    if (err) {
-      console.error(`Error moving file: ${err}`);
-      res.status(500).json({ error: 'Internal Server Errors ss' });
-    } else {
+    if (!req.files || !req.files.image || Object.keys(req.files.image).length === 0) {
+      // No new image selected, update without changing the image
+      const updateProduct = {
+          id: id,
+          title: title,
+          description: description,
+          category_id: Number(category_id),
+      };
       Product.updateProduct(updateProduct);
       const products = Product.getAllProducts();
       const productToEdit = Product.getProductById(productId);
       const allCategoryNamesWithIds = Category.getAllCategoryNamesWithIds();
-      res.json({products: products, productToEdit: productToEdit,allCategoryNamesWithIds: allCategoryNamesWithIds, title: 'Admin Products'});    }
+
+      return res.json({
+          products: products,
+          productToEdit: productToEdit,
+          allCategoryNamesWithIds: allCategoryNamesWithIds,
+          title: 'Admin Products'
+      });
+  }
+  const image = req.files.image;
+  const updateProductWithImage = {
+      id: id,
+      title: title,
+      description: description,
+      category_id: Number(category_id),
+      image: image.name,
+  };
+  const uploadPath = path.join(projectPath, '/public/uploads/product', image.name);
+  const uploadFold = path.join(projectPath, '/public/uploads/product');
+  if (!fs.existsSync(uploadFold)) {
+      fs.mkdirSync(uploadFold, { recursive: true });
+  }
+  Product.updateProduct(updateProductWithImage);
+  image.mv(uploadPath, (err) => {
+      if (err) {
+          console.error(`Error moving file: ${err}`);
+          return res.status(500).json({ error: 'Internal Server Error' });
+      } else {
+          const products = Product.getAllProducts();
+          const productToEdit = Product.getProductById(productId);
+          const allCategoryNamesWithIds = Category.getAllCategoryNamesWithIds();
+          return res.json({
+              products: products,
+              productToEdit: productToEdit,
+              allCategoryNamesWithIds: allCategoryNamesWithIds,
+              title: 'Admin Products'
+          });
+      }
   });
-   
 }
 
 deleteProduct(req, res) {
     const productId = req.body.id; 
     Product.deleteProduct(productId);
     const updatedProducts = Product.getAllProducts();
-   res.json({ products: updatedProducts });
+    const allCategoryNamesWithIds = Category.getAllCategoryNamesWithIds();
+   res.json({ products: updatedProducts, allCategoryNamesWithIds: allCategoryNamesWithIds, title: 'Admin Products' });
   }
 }
 
