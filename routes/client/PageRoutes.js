@@ -13,7 +13,6 @@ class PageRoutes {
     router.get('/contact-us', PageController.renderContactUsPage);
     router.get('/about-us', PageController.renderAboutUsPage);
     router.get('/my-account', PageController.renderMyAccountPage);
-    router.get('/product-detail', PageController.renderProductDetailPage);
     router.get('/cart', PageController.renderCartPage);
     router.get('/wishlist', PageController.renderWishList);
     router.get('/check-out', PageController.renderCheckOutPage);
@@ -22,7 +21,7 @@ class PageRoutes {
     router.get('/empty-cart', PageController.renderEmptyCartPage);
     router.get('/404', PageController.render404Page);    
     router.get('/checkout', PageController.renderCheckOutPage);
-    router.get('*', PageController.render404Page);
+  
 
   }
   getRouter() {

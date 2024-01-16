@@ -1,18 +1,108 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "noppt",
-      "description": "sfd",
-      "category_id": 2,
-      "image": "sinh-vat-gyeongseong.jpg"
+      "id": 1,
+      "category_id": 1,
+      "title": "Casual T-Shirt",
+      "price": 19.99,
+      "description": "Comfortable casual t-shirt",
+      "image": "3.jpg"
     },
     {
       "id": 2,
-      "title": "fds",
-      "description": "sdf",
+      "category_id": 1,
+      "title": "Formal Dress Shirt",
+      "price": 29.99,
+      "description": "Elegant formal dress shirt",
+      "image": "7.jpg"
+    },
+    {
+      "id": 3,
+      "category_id": 1,
+      "title": "Printed Polo Shirt",
+      "price": 24.99,
+      "description": "Stylish printed polo shirt",
+      "image": "polo.webp"
+    },
+    {
+      "id": 4,
+      "category_id": 2,
+      "title": "Slim Fit Jeans",
+      "price": 39.99,
+      "description": "Trendy slim fit jeans",
+      "image": "product-3.png"
+    },
+    {
+      "id": 5,
+      "category_id": 2,
+      "title": "Cargo Pants",
+      "price": 34.99,
+      "description": "Functional cargo pants",
+      "image": "trend-2.png"
+    },
+    {
+      "id": 6,
       "category_id": 3,
-      "image": "vien-canh-trong-mo.jpg"
+      "title": "Leather Jacket",
+      "price": 79.99,
+      "description": "Classic leather jacket",
+      "image": "product-16.png"
+    },
+    {
+      "id": 7,
+      "category_id": 3,
+      "title": "Denim Jacket",
+      "price": 59.99,
+      "description": "Stylish denim jacket",
+      "image": "product-19.png"
+    },
+    {
+      "id": 8,
+      "category_id": 4,
+      "title": "Sunglasses",
+      "price": 15.99,
+      "description": "UV protection sunglasses",
+      "image": "61lQ27AQcUL._AC_UL480_FMwebp_QL65_.webp"
+    },
+    {
+      "id": 9,
+      "category_id": 4,
+      "title": "Classic Tie",
+      "price": 12.99,
+      "description": "Elegant classic tie",
+      "image": "34438.webp"
+    },
+    {
+      "id": 10,
+      "category_id": 5,
+      "title": "Sneakers",
+      "price": 49.99,
+      "description": "Comfortable sneakers",
+      "image": "product-6.png"
+    },
+    {
+      "id": 11,
+      "category_id": 5,
+      "title": "Formal Shoes",
+      "price": 39.99,
+      "description": "Stylish formal shoes",
+      "image": "71aPsuGNhUL._AC_UL480_FMwebp_QL65_.webp"
+    },
+    {
+      "id": 12,
+      "category_id": 6,
+      "title": "Men's Stainless Steel Watch",
+      "price": 129.99,
+      "description": "Durable stainless steel watch for men",
+      "image": "71x-Ti7UiuL._AC_UL480_QL65_.jpg"
+    },
+    {
+      "id": 13,
+      "category_id": 6,
+      "title": "Women's Leather Strap Watch",
+      "price": 99.99,
+      "description": "Elegant leather strap watch for women",
+      "image": "61AQr8vOg5L._AC_UL480_FMwebp_QL65_.webp"
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "customerId": 1,
+            "productId": 1,
+            "quantity": 2,
+            "total": 39.98
+
+        },
+        {
+            "id": 2,
+            "customerId": 2,
+            "productId": 2,
+            "quantity": 1,
+            "total": 29.99
+
+        }
+    ]
+  }

@@ -99,8 +99,6 @@ $(document).ready(function () {
             success: function (response) {
 
                 updateTable(response.categories);
-                // Clear the form fields
-
             },
         })
     }})

@@ -1,6 +1,6 @@
 // models/Product.js
 const fs = require('fs');
-
+const Category = require('./Category');
 class Product {
     constructor() {
         this.products = this.loadProducts();
@@ -16,12 +16,26 @@ class Product {
         const data = JSON.stringify({products: this.products}, null, 2);
         fs.writeFileSync('database/products.json', data, 'utf8');
     }
-
+    
+    // getAllProducts() {
+    //     return this.products;
+    // }
     getAllProducts() {
-        return this.products;
+        return this.products.map(product => ({
+            ...product,
+            category_name: this.getCategoryName(product.category_id),
+        }));
+    }
+    getCategoryName(categoryId) {
+        const category = Category.getCategoryById(categoryId);
+        return category ? category.title : null;
     }
     getProductById(productId) {
-        return this.products.find(product => product.id == productId);
+        const product = this.products.find(product => product.id == productId);
+        if (product) {
+            product.category_name = this.getCategoryName(product.category_id);
+        }
+        return product;
     }
     getLastProductId() {
       if (this.products.length === 0) {

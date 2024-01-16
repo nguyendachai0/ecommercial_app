@@ -2,23 +2,62 @@
   "categories": [
     {
       "id": 1,
-      "title": "Áo",
-      "description": "áo thôi"
+      "title": "Shirts",
+      "description": "Various types of shirts"
     },
     {
       "id": 2,
-      "title": "Quần",
-      "description": "quần thôi"
+      "title": "Pants",
+      "description": "Different styles of pants"
     },
     {
       "id": 3,
-      "title": "Áo khoác",
-      "description": "Áo khoác"
+      "title": "Jackets",
+      "description": "Stylish jackets for all occasions"
     },
     {
       "id": 4,
-      "title": "another",
-      "description": "one"
+      "title": "Accessories",
+      "description": "Various accessories to complement your style"
+    },
+    {
+      "id": 5,
+      "title": "Shoes",
+      "description": "Stylish footwear for every occasion"
+    },
+    {
+      "id": 6,
+      "title": "Watches",
+      "description": "Fashionable wristwatches for men and women"
+    }, {
+      "id": 7,
+      "title": "Hats",
+      "description": "Trendy hats and headwear"
+    },
+    {
+      "id": 8,
+      "title": "Sunglasses",
+      "description": "Stylish sunglasses for UV protection"
+    },
+    {
+      "id": 9,
+      "title": "Socks",
+      "description": "Comfortable and fashionable socks"
+    },
+    {
+      "id": 10,
+      "title": "Ties",
+      "description": "Classic and modern ties for formal occasions"
+    },
+    {
+      "id": 11,
+      "title": "Belts",
+      "description": "High-quality belts for men and women"
+    },
+    {
+      "id": 12,
+      "title": "Bags",
+      "description": "Stylish bags and backpacks"
     }
   ]
 }
