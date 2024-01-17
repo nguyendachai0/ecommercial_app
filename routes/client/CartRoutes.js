@@ -7,6 +7,7 @@ class CartRoutes {
     this.configureRoutes();
   }
   configureRoutes() {
+    router.get('/cart', CartController.renderCartPage);
     router.post(
         '/add-to-cart', CartController.addToCart
     );

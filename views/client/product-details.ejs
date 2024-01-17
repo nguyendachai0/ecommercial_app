@@ -45,7 +45,7 @@
                     <div class="product-details-variable">
                         <h4 class="title">Available Options</h4>
                         <!-- Product Variable Single Item -->
-                        <form method="post" action="/add-to-cart">
+                        <form method="post" action="<%= locals.base_url %>add-to-cart">
                             <input type="hidden" name="itemId" value="<%= product.id %>">
                             <div class="variable-single-item">
                                 <!-- Product Variable Single Item -->
@@ -53,32 +53,32 @@
                                     <span>Color</span>
                                     <div class="product-variable-color">
                                         <label for="product-color-red">
-                                            <input name="product-color" id="product-color-red" class="color-select"
+                                            <input name="color" value="red" id="product-color-red" class="color-select"
                                                 type="radio" checked>
                                             <span class="product-color-red"></span>
                                         </label>
                                         <label for="product-color-tomato">
-                                            <input name="product-color" id="product-color-tomato" class="color-select"
-                                                type="radio">
+                                            <input name="color" value="tomato" id="product-color-tomato"
+                                                class="color-select" type="radio">
                                             <span class="product-color-tomato"></span>
                                         </label>
                                         <label for="product-color-green">
-                                            <input name="product-color" id="product-color-green" class="color-select"
-                                                type="radio">
+                                            <input name="color" value="green" id="product-color-green"
+                                                class="color-select" type="radio">
                                             <span class="product-color-green"></span>
                                         </label>
                                         <label for="product-color-light-green">
-                                            <input name="product-color" id="product-color-light-green"
+                                            <input name="color" value="light-green" id="product-color-light-green"
                                                 class="color-select" type="radio">
                                             <span class="product-color-light-green"></span>
                                         </label>
                                         <label for="product-color-blue">
-                                            <input name="product-color" id="product-color-blue" class="color-select"
-                                                type="radio">
+                                            <input name="color" value="blue" id="product-color-blue"
+                                                class="color-select" type="radio">
                                             <span class="product-color-blue"></span>
                                         </label>
                                         <label for="product-color-light-blue">
-                                            <input name="product-color" id="product-color-light-blue"
+                                            <input name="color" value="light-blue" id="product-color-light-blue"
                                                 class="color-select" type="radio">
                                             <span class="product-color-light-blue"></span>
                                         </label>
@@ -89,12 +89,12 @@
                                 <div class="variable-single-item">
                                     <span>Size</span>
                                     <select class="product-variable-size" name="size">
-                                        <option selected value="1"> size in option</option>
-                                        <option value="2">s</option>
-                                        <option value="3">m</option>
-                                        <option value="4">l</option>
-                                        <option value="5">xl</option>
-                                        <option value="6">xxl</option>
+                                        <option selected>size in option</option>
+                                        <option value="s">s</option>
+                                        <option value="m">m</option>
+                                        <option value="l">l</option>
+                                        <option value="xl">xl</option>
+                                        <option value="xxl">xxl</option>
                                     </select>
                                 </div>
                                 <!-- Product Variable Single Item -->

@@ -25,18 +25,9 @@ class PageController {
   renderMyAccountPage(req,res){
     res.render('client/my-account', { title: 'My account'});
   }
-
-  renderCartPage(req, res){
-    res.render('client/cart', { title: 'Cart page'});
-  }
   renderEmptyCartPage(req, res){
     res.render('client/empty-cart', { title: 'Empty cart page'});
-  }
-  renderCheckOutPage(req, res){
-    res.render('client/checkout', { title: 'Check out page'});
-  }
-
-  renderWishList(req, res){
+  }  renderWishList(req, res){
     res.render('client/wish-list', { title: 'Wish list page'});
   }
 }

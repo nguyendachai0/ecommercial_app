@@ -8,6 +8,7 @@ const PageRoutes = require('./routes/client/PageRoutes');
 const AuthRoutes = require('./routes/AuthRoutes');
 const AdminRoutes = require ('./routes/admin/Home');
 const ProductRoutes = require('./routes/client/ProductRoutes');
+const OrderRoutes = require('./routes/client/OrderRoutes');
 const expressLayouts = require('express-ejs-layouts');
 const AdminCategoryRoutes = require('./routes/admin/AdminCategoryRoutes');
 const AdminProductRoutes = require('./routes/admin/AdminProductRoutes');
@@ -64,6 +65,7 @@ app.use('/', AuthRoutes);
 app.use('/', PageRoutes);
 app.use('/', ProductRoutes);
 app.use('/', CartRoutes);
+app.use('/', OrderRoutes);
 app.get('*', (req, res) => {
   res.render('client/404', { title: 'Page not found' });
 })
