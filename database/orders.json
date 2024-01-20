@@ -1,5 +1,46 @@
 {
   "orders": [
-    
+    {
+      "id": 1,
+      "firstName": "hai",
+      "street": "36 Nguyen Huu Tho",
+      "city": "Da Nang",
+      "country": "Viet nam",
+      "phone": "0389755071",
+      "email": "nguyendmim@gmail.com",
+      "items": [
+        {
+          "itemId": "1",
+          "title": "Casual T-Shirt",
+          "unit_price": 19.99,
+          "price": 19.99,
+          "image": "3.jpg",
+          "quantity": 1,
+          "color": [
+            "red"
+          ],
+          "size": [
+            "m"
+          ]
+        },
+        {
+          "itemId": "2",
+          "title": "Formal Dress Shirt",
+          "unit_price": 29.99,
+          "price": 59.98,
+          "image": "7.jpg",
+          "quantity": 2,
+          "color": [
+            "red",
+            "red"
+          ],
+          "size": [
+            "xxl",
+            "xxl"
+          ]
+        }
+      ],
+      "total": 79.97
+    }
   ]
 }

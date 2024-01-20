@@ -11,6 +11,8 @@ class CartRoutes {
     router.post(
         '/add-to-cart', CartController.addToCart
     );
+    router.post('/delete-from-cart', CartController.deleteFromCart);
+
   }
   getRouter() {
     return router;

@@ -7,6 +7,8 @@ class ProductRoutes {
     this.configureRoutes();
   }
   configureRoutes() {
+    router.get('/shop', ProductController.renderShopPage);
+    router.post('/shop', ProductController.filterProduct);
     router.get('/product/:id', ProductController.renderProductDetailPage);
   }
   getRouter() {

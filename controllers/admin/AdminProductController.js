@@ -12,7 +12,7 @@ class AdminProductController {
     }
     addProduct(req, res) {
         const formData = req.body;
-        const { title, description, category_id } = req.body;
+        const { title, price, description, category_id } = req.body;
         if (!req.files || Object.keys(req.files).length === 0) {
           throw new Error('No files were uploaded.');
       }
@@ -21,6 +21,7 @@ class AdminProductController {
         const newProduct = {
             id: nextProductId,
             title: title,
+            price: price,
             description: description,
             category_id: Number(category_id),
             image: image.name, 
@@ -53,12 +54,13 @@ class AdminProductController {
   updateProduct(req, res) {
     const formData = req.body;
     const productId = req.params.id; 
-    const {id, title, description, category_id } = req.body;
+    const {id, title,price, description, category_id } = req.body;
     if (!req.files || !req.files.image || Object.keys(req.files.image).length === 0) {
       // No new image selected, update without changing the image
       const updateProduct = {
           id: id,
           title: title,
+          price: Number(price),
           description: description,
           category_id: Number(category_id),
       };

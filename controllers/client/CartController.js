@@ -3,8 +3,13 @@ class CartController {
 
     renderCartPage(req, res) {
       const cartData = req.session.cart || [];
+     
+      if(cartData.length == 0){
+        res.render('client/empty-cart', {title: 'Cart empty'});
+      }else {
       const total = cartData.reduce((acc, item) => acc + item.price, 0);
           res.render('client/cart', { title: 'Cart page', cart:cartData, total: total});
+      }
     }
     addToCart(req, res){
         const {itemId, color, size, quantity} = req.body;
@@ -36,8 +41,24 @@ class CartController {
       color: colors,
       size: sizes
   });    
-  }
+  const itemsCount = req.session.cart ? req.session.cart.length : 0;
+}
   res.redirect('/cart');}
     
+  deleteFromCart(req, res){
+    const itemId = req.body.itemId;
+    const cart = req.session.cart || [];
+    const itemIndex = cart.findIndex(item => item.itemId == itemId);
+
+    // Check if the item was found in the cart
+    if (itemIndex !== -1) {
+      // Remove the item from the cart
+      cart.splice(itemIndex, 1);
+
+      // Update the cart in the session
+      req.session.cart = cart;
+      res.redirect('/cart');  }
 }
+}
+
 module.exports = new CartController()

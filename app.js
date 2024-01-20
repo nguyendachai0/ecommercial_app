@@ -13,6 +13,7 @@ const expressLayouts = require('express-ejs-layouts');
 const AdminCategoryRoutes = require('./routes/admin/AdminCategoryRoutes');
 const AdminProductRoutes = require('./routes/admin/AdminProductRoutes');
 const CartRoutes = require('./routes/client/CartRoutes');
+const WishListRoutes = require('./routes/client/WishListRoutes');
 const fileUpload = require('express-fileupload');
 const cookieParser = require("cookie-parser");
 
@@ -36,7 +37,18 @@ app.use((req, res, next) => {
     app.locals.base_url = process.env.BASE_URL || 'http://localhost:3000/admin/';
   } else {
     res.locals.layout = 'client/layout';
+    const cartData = req.session.cart || [];
+    const itemsCount = cartData.length;
+   const total = cartData.reduce((acc, item) => acc + item.price, 0);
+   const wishListData = req.session.wishList || [];
+   const itemsWishListCount = wishListData.length;
+    res.locals.itemsCount = itemsCount;
+    res.locals.cartData = cartData;
+    res.locals.total = total;
+    res.locals.wishList = wishListData;
+    res.locals.itemsWishListCount = itemsWishListCount;
     app.locals.base_url = process.env.BASE_URL || 'http://localhost:3000/'
+  
   }
   next();
 });
@@ -47,6 +59,13 @@ app.use((req, res, next) => {
     next();
   }
 });
+app.use((req, res, next) => {
+  const token = req.cookies.jwt;
+  res.json(token);
+  if(token){
+    
+  }
+})
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -54,7 +73,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app
 app.get("/profile",validateAdmin, (req, res)=> {
-  res.json("profile");
+  const accessToken = req.cookies["access-token"];
+  res.json( accessToken['username'] );
 })
 app.get('/logout', (req, res)=> {
  res.clearCookie('access-token');
@@ -65,13 +85,15 @@ app.use('/', AuthRoutes);
 app.use('/', PageRoutes);
 app.use('/', ProductRoutes);
 app.use('/', CartRoutes);
+app.use('/', WishListRoutes);
 app.use('/', OrderRoutes);
-app.get('*', (req, res) => {
-  res.render('client/404', { title: 'Page not found' });
-})
+
 app.use('/',  AdminRoutes);
 app.use('/' ,AdminCategoryRoutes);
 app.use('/', AdminProductRoutes);
+// app.get('*', (req, res) => {
+//   res.render('client/404', { title: 'Page not found' });
+// })
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

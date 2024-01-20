@@ -4,8 +4,12 @@ class OrderController {
 
     renderOrderPage(req, res) {
       const cartData = req.session.cart || [];
+      if(cartData.length == 0){
+        res.render('client/empty-cart', {title: "Can not check out"});
+      }else {
       const total = cartData.reduce((acc, item) => acc + item.price, 0);
           res.render('client/checkout', { title: 'Order page', cart:cartData, total: total});
+      }
     }
     makeOrder(req, res){     
             const orderData = req.body;
@@ -27,7 +31,7 @@ class OrderController {
            
              Order.addOrder(newOrder);
             req.session.cart = [];
-            res.status(201).json({ message: 'Order placed successfully!' });
+            res.redirect('/');
   }
     
 }

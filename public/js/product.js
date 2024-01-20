@@ -57,6 +57,7 @@ $(document).ready(function () {
         const formData = new FormData();
         if ($(this).valid()) {
             formData.append('title', document.getElementById('val-title').value);
+            formData.append('price', document.getElementById('val-price').value);
                 formData.append('description', document.getElementById('val-description').value);
                 formData.append('category_id', document.getElementById('val-category-id').value);
                 formData.append('image', document.getElementById('val-image').files[0]);
@@ -84,6 +85,7 @@ $(document).ready(function () {
         if ($(this).valid()) {
             formData.append('id', document.getElementById('val-id').value);
             formData.append('title', document.getElementById('val-title').value);
+            formData.append('price', document.getElementById('val-price').value);
             formData.append('description', document.getElementById('val-description').value);
             formData.append('category_id', document.getElementById('val-category-id').value);
             const imageInput = document.getElementById('val-image');

@@ -10,7 +10,6 @@ class AdminRoutes {
   constructor() {
     this.configureRoutes();
   }
-
   configureRoutes() {
     // Validate token for authentication
     router.use(validateToken);    // Validate admin privileges

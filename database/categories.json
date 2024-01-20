@@ -29,7 +29,8 @@
       "id": 6,
       "title": "Watches",
       "description": "Fashionable wristwatches for men and women"
-    }, {
+    },
+    {
       "id": 7,
       "title": "Hats",
       "description": "Trendy hats and headwear"
@@ -58,6 +59,11 @@
       "id": 12,
       "title": "Bags",
       "description": "Stylish bags and backpacks"
+    },
+    {
+      "id": 13,
+      "title": "Skin care",
+      "description": "All high quality Skin care product"
     }
   ]
 }

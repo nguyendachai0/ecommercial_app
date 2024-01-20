@@ -4,31 +4,34 @@ const Product = require('../../models/Product');
 const User = require('../../models/User');
 class PageController {
   renderHomePage(req, res) {
-    const featuredProducts = Category.getAllCategories();
-    const user = User.getAllUsers();
-    res.render('client/home', {featuredProducts: featuredProducts, title: 'Home page'});
+    const allCategories = Category.getAllCategories();
+    const newProducts = Product.getNewProducts(8);
+    res.render('client/home', {allCategories: allCategories, newProducts: newProducts, title: 'Home page'});
   }
-  renderShopPage(req,res){
-    const categories = Category.getAllCategories();
-    const products = Product.getAllProducts();
-    res.render('client/shop', {categories: categories, products: products, title: 'Shop page'});
-  }
+  
   renderContactUsPage(req, res){
-    res.render('client/contact-us', { title: 'Contact us page'});
+    const breadcrumbData = [
+      { label: 'Contact', link: '/contact-us' }
+    ];
+    res.render('client/contact-us', { title: 'Contact us page', breadcrumbData: breadcrumbData});
   }
   renderAboutUsPage(req, res){
-    res.render('client/about-us', { title: 'About us page'});
+    const breadcrumbData = [
+      { label: 'About us', link: '/about-us' }
+    ];
+    res.render('client/about-us', { title: 'About us page', breadcrumbData: breadcrumbData});
   }
   render404Page(req, res){
-    res.render('client/404', { title: 'Page not found'});
+    const breadcrumbData = [
+      { label: 'Error', link: '/404' }
+    ];
+    res.render('client/404', { title: 'Page not found', breadcrumbData: breadcrumbData});
   }
   renderMyAccountPage(req,res){
+    const breadcrumbData = [
+      { label: 'My account', link: '/my-account' }
+    ];
     res.render('client/my-account', { title: 'My account'});
-  }
-  renderEmptyCartPage(req, res){
-    res.render('client/empty-cart', { title: 'Empty cart page'});
-  }  renderWishList(req, res){
-    res.render('client/wish-list', { title: 'Wish list page'});
   }
 }
 

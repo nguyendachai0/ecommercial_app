@@ -30,6 +30,19 @@ class Product {
         const category = Category.getCategoryById(categoryId);
         return category ? category.title : null;
     }
+    getProductsByPriceRange(priceRange, products) {
+        const [minPrice, maxPrice] = priceRange;
+
+        return products
+            .filter(product => {
+                const productPrice = parseFloat(product.price);
+                return productPrice >= minPrice && productPrice <= maxPrice;
+            })
+            .map(product => ({
+                ...product,
+                category_name: this.getCategoryName(product.category_id),
+            }));
+    }
     getProductById(productId) {
         const product = this.products.find(product => product.id == productId);
         if (product) {
@@ -43,6 +56,14 @@ class Product {
       }
       return this.products[this.products.length - 1].id;
   }
+  getProductsByCategoryId(categoryId) {
+    return this.products
+        .filter(product => product.category_id == categoryId)
+        .map(product => ({
+            ...product,
+            category_name: this.getCategoryName(product.category_id),
+        }));
+}
 
     addProduct(newProduct) {
         this.products.push(newProduct);
@@ -63,6 +84,15 @@ class Product {
     deleteProduct(productId) {
         this.products = this.products.filter(product => product.id != (productId));
         this.saveProducts(); 
+    }
+    getNewProducts(quantity) {
+        if (this.products.length === 0) {
+            return [];
+        }
+        const result = this.products.slice()
+            .sort((a, b) => b.id - a.id)
+            .slice(0, quantity);
+        return result;
     }
 }
 

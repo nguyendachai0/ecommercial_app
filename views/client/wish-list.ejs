@@ -15,56 +15,34 @@
                                         <th class="product_thumb">Image</th>
                                         <th class="product_name">Product</th>
                                         <th class="product-price">Price</th>
-                                        <th class="product_stock">Stock Status</th>
-                                        <th class="product_addcart">Add To Cart</th>
                                     </tr>
                                 </thead> <!-- End Cart Table Head -->
                                 <tbody>
+
                                     <!-- Start Wishlist Single Item-->
-                                    <tr>
-                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                        <td class="product_thumb"><a href="product-details-default.html"><img
-                                                    src="assets/images/product/default/home-1/default-1.jpg" alt=""></a>
-                                        </td>
-                                        <td class="product_name"><a href="product-details-default.html">Handbag
-                                                fringilla</a></td>
-                                        <td class="product-price">$65.00</td>
-                                        <td class="product_stock">In Stock</td>
-                                        <td class="product_addcart"><a href="#" class="btn btn-md btn-golden"
-                                                data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
-                                                Cart</a></td>
-                                    </tr> <!-- End Wishlist Single Item-->
-                                    <!-- Start Wishlist Single Item-->
-                                    <tr>
-                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                        <td class="product_thumb"><a href="product-details-default.html"><img
-                                                    src="assets/images/product/default/home-1/default-2.jpg" alt=""></a>
-                                        </td>
-                                        <td class="product_name"><a href="product-details-default.html">Handbags
-                                                justo</a></td>
-                                        <td class="product-price">$90.00</td>
-                                        <td class="product_stock">In Stock</td>
-                                        <td class="product_addcart"><a href="#" class="btn btn-md btn-golden"
-                                                data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
-                                                Cart</a></td>
-                                    </tr> <!-- End Wishlist Single Item-->
-                                    <!-- Start Wishlist Single Item-->
-                                    <tr>
-                                        <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                        <td class="product_thumb"><a href="product-details-default.html"><img
-                                                    src="assets/images/product/default/home-1/default-3.jpg" alt=""></a>
-                                        </td>
-                                        <td class="product_name"><a href="product-details-default.html">Handbag
-                                                elit</a></td>
-                                        <td class="product-price">$80.00</td>
-                                        <td class="product_stock">In Stock</td>
-                                        <td class="product_addcart"><a href="#" class="btn btn-md btn-golden"
-                                                data-bs-toggle="modal" data-bs-target="#modalAddcart">Add To
-                                                Cart</a></td>
-                                    </tr> <!-- End Wishlist Single Item-->
+                                    <% locals.wishList.forEach((item)=> { %>
+                                        <tr>
+                                            <td class="product_remove">
+                                                <form method="post" action="<%= locals.base_url %>delete-from-wishlist">
+                                                    <input type="hidden" name="itemId" value="<%= item.itemId %>">
+                                                    <button class="bg-transparent"><i
+                                                            class="fa fa-trash-o text-dark"></i></button>
+                                                </form>
+                                            </td>
+                                            <td class="product_thumb"><a
+                                                    href="<%= locals.base_url%>product/<%= item.itemId %>"><img
+                                                        src="<%= locals.base_url %>uploads/product/<%= item.image %>"
+                                                        alt=""></a>
+                                            </td>
+                                            <td class="product_name"><a
+                                                    href="<%= locals.base_url%>product/<%= item.itemId %>">
+                                                    <%= item.title %>
+                                                </a></td>
+                                            <td class="product-price">$<%= item.unit_price %>
+                                            </td>
+
+                                        </tr> <!-- End Wishlist Single Item-->
+                                        <% }) %>
                                 </tbody>
                             </table>
                         </div>
