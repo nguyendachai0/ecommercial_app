@@ -17,6 +17,7 @@ class AuthController {
     if (user && await bcrypt.compare(password, user.password))
      {
       const accessToken = createTokens(user)
+      console.log(accessToken);
       res.cookie("access-token", accessToken, {
         maxAge: 60 * 60 * 24 * 30 * 1000,
       });

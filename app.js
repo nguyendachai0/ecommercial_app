@@ -12,11 +12,12 @@ const OrderRoutes = require('./routes/client/OrderRoutes');
 const expressLayouts = require('express-ejs-layouts');
 const AdminCategoryRoutes = require('./routes/admin/AdminCategoryRoutes');
 const AdminProductRoutes = require('./routes/admin/AdminProductRoutes');
+const AdminOrderRoutes = require('./routes/admin/AdminOrderRoutes');
 const CartRoutes = require('./routes/client/CartRoutes');
 const WishListRoutes = require('./routes/client/WishListRoutes');
 const fileUpload = require('express-fileupload');
 const cookieParser = require("cookie-parser");
-
+const {sign, verify} = require("jsonwebtoken");
 const app = express();
 const PORT = 3000;
 app.set('view engine', 'ejs');
@@ -34,7 +35,7 @@ app.use(
 app.use((req, res, next) => {
   if (req.originalUrl.startsWith('/admin')) {
     res.locals.layout = 'admin/layout';
-    app.locals.base_url = process.env.BASE_URL || 'http://localhost:3000/admin/';
+    app.locals.base_url = process.env.BASE_URL || 'http://localhost:3000/';
   } else {
     res.locals.layout = 'client/layout';
     const cartData = req.session.cart || [];
@@ -53,19 +54,32 @@ app.use((req, res, next) => {
   next();
 });
 app.use((req, res, next) => {
+  const accessToken = req.cookies["access-token"];
+
+  // Check if the cookie exists
+  if (accessToken) {
+    // Decode the access token to get user data
+    const decodedToken = verify(accessToken, "jwtsecret");
+    if (decodedToken) {
+      req.user = {
+        email: decodedToken.email,
+        id: decodedToken.id,
+        role: decodedToken.role
+      };
+      res.locals.user = req.user;
+    }
+  }
+  next();
+});
+
+app.use((req, res, next) => {
   if (req.originalUrl.startsWith('/admin')) {
     validateAdmin(req, res, next);
   } else {
     next();
   }
 });
-app.use((req, res, next) => {
-  const token = req.cookies.jwt;
-  res.json(token);
-  if(token){
-    
-  }
-})
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -91,6 +105,7 @@ app.use('/', OrderRoutes);
 app.use('/',  AdminRoutes);
 app.use('/' ,AdminCategoryRoutes);
 app.use('/', AdminProductRoutes);
+app.use('', AdminOrderRoutes);
 // app.get('*', (req, res) => {
 //   res.render('client/404', { title: 'Page not found' });
 // })
