@@ -15,9 +15,15 @@
                     <div class="header-top-right">
                         <div
                             class="header-top-user-link header-top-user-link-color--white header-top-user-link-hover-color--green">
-                            <a href="<%= locals.base_url %>wishlist">Wishlist</a>
-                            <a href="<%= locals.base_url %>cart">Cart</a>
-                            <a href="<%= locals.base_url %>checkout">Checkout</a>
+                            <% if (locals.user) { %>
+                                <a href="<%= locals.base_url %>logout">Logout</a>
+                                <% }else { %>
+                                    <a href="<%= locals.base_url %>login">Login</a>
+                                    <a href="<%= locals.base_url %>register">register</a>
+                                    <% } %>
+                                        <a href="<%= locals.base_url %>wishlist">Wishlist</a>
+                                        <a href="<%= locals.base_url %>cart">Cart</a>
+                                        <a href="<%= locals.base_url %>checkout">Checkout</a>
                         </div>
                     </div>
                 </div>
@@ -223,9 +229,15 @@
         </ul>
 
         <ul class="user-link">
-            <li><a href="<%= locals.base_url %>wishlist">Wishlist</a></li>
-            <li><a href="<%= locals.base_url %>cart">Cart</a></li>
-            <li><a href="<%= locals.base_url %>checkout">Checkout</a></li>
+            <% if (locals.user) { %>
+                <a href="<%= locals.base_url %>logout">Logout</a>
+                <% }else { %>
+                    <a href="<%= locals.base_url %>login">Login</a>
+                    <a href="<%= locals.base_url %>register">register</a>
+                    <% } %>
+                        <li><a href="<%= locals.base_url %>wishlist">Wishlist</a></li>
+                        <li><a href="<%= locals.base_url %>cart">Cart</a></li>
+                        <li><a href="<%= locals.base_url %>checkout">Checkout</a></li>
         </ul>
     </div>
     <!-- End Mobile contact Info -->

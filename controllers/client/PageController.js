@@ -28,6 +28,12 @@ class PageController {
     ];
     res.render('client/404', { title: 'Page not found', breadcrumbData: breadcrumbData});
   }
+  renderAccessDeniedPage(req, res){
+    const breadcrumbData = [
+      { label: 'Access denied', link: '/access-denied' }
+    ];
+    res.render('client/access-denied', { title: 'Access Denied', breadcrumbData: breadcrumbData});
+  }
   renderMyAccountPage(req,res){
     const breadcrumbData = [
       { label: 'My account', link: '/my-account' }

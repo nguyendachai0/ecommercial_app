@@ -14,6 +14,7 @@ class PageRoutes {
     router.get('/about-us', PageController.renderAboutUsPage);
     router.get('/my-account', PageController.renderMyAccountPage);
     router.get('/404', PageController.render404Page);    
+    router.get('/access-denied', PageController.renderAccessDeniedPage);    
   }
   getRouter() {
     return router;

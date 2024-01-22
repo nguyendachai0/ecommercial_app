@@ -26,12 +26,12 @@ const createTokens = (user) => {
               if (decodedToken.role === 'admin') {
                 req.isAdmin = true;
               }else {
-                return res.status(400).json({ error: "Access Denied!" });
+                return res.redirect('/access-denied');
             }
               return next();
             }
         }catch (err){
-            return res.status(403).json({ error: err.message });
+            return res.status(403).redirect('/access-denied');
             }
     }
 module.exports = {createTokens, validateToken, validateAdmin}

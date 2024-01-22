@@ -7,7 +7,7 @@ class OrderRoutes {
     this.configureRoutes();
   }
   configureRoutes() {
-    router.get('/checkout', OrderController.renderOrderPage);
+    router.get('/checkout', OrderController.renderCheckoutPage);
     router.post('/checkout', OrderController.makeOrder);
   }
   getRouter() {

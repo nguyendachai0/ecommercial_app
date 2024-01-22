@@ -2,7 +2,7 @@ const Product = require('../../models/Product');
 const Order = require('../../models/Order');
 class OrderController {
 
-    renderOrderPage(req, res) {
+    renderCheckoutPage(req, res) {
       const cartData = req.session.cart || [];
       if(cartData.length == 0){
         res.render('client/empty-cart', {title: "Can not check out"});
@@ -33,6 +33,6 @@ class OrderController {
             req.session.cart = [];
             res.redirect('/');
   }
-    
+
 }
 module.exports = new OrderController();
