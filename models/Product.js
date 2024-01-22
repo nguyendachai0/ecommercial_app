@@ -94,6 +94,18 @@ class Product {
             .slice(0, quantity);
         return result;
     }
+    getBestSellers(quantity) {
+        const sortedProducts = this.products
+            .slice()
+            .sort((a, b) => (b.sales || 0) - (a.sales || 0))
+            .slice(0, quantity);
+
+        return sortedProducts.map(product => ({
+            ...product,
+            category_name: this.getCategoryName(product.category_id),
+        }));
+    }
+
 }
 
 module.exports = new Product();

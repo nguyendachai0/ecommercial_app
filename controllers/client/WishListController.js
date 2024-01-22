@@ -6,7 +6,7 @@ class WishListController {
       if(wishListData.length == 0){
         res.render('client/empty-wish-list', {title: 'WishList empty'});
       }else {
-           res.render('client/wishlist', { title: 'Wist List page', wishList:wishListData});
+           res.render('client/wish-list', { title: 'Wist List page', wishList:wishListData});
       }
     }
     addToWishList(req, res){

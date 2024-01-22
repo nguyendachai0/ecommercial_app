@@ -6,7 +6,8 @@ class PageController {
   renderHomePage(req, res) {
     const allCategories = Category.getAllCategories();
     const newProducts = Product.getNewProducts(8);
-    res.render('client/home', {allCategories: allCategories, newProducts: newProducts, title: 'Home page'});
+    const bestSellers = Product.getNewProducts(12);
+    res.render('client/home', {allCategories: allCategories, newProducts: newProducts,bestSellers: bestSellers, title: 'Home page'});
   }
   
   renderContactUsPage(req, res){

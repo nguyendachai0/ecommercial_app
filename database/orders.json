@@ -41,6 +41,33 @@
         }
       ],
       "total": 79.97
+    },
+    {
+      "id": 2,
+      "firstName": "",
+      "lastName": "",
+      "street": "",
+      "city": "",
+      "country": "",
+      "phone": "",
+      "email": "",
+      "items": [
+        {
+          "itemId": "1",
+          "title": "Casual T-Shirt",
+          "unit_price": 19.99,
+          "price": 19.99,
+          "image": "3.jpg",
+          "quantity": 1,
+          "color": [
+            "red"
+          ],
+          "size": [
+            "s"
+          ]
+        }
+      ],
+      "total": 19.99
     }
   ]
 }

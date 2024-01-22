@@ -110,15 +110,48 @@
       "title": "Roys rush sereum",
       "price": 150,
       "description": "Organic ingredients",
-      "image": ""
+      "image": "hero-slider-1.jpg"
     },
     {
-      "id": "15",
-      "title": "title",
-      "price": 204,
-      "description": "des",
-      "category_id": 7,
-      "image": "th.jpg"
+      "id": 15,
+      "category_id": 14,
+      "title": "over-ear rocker 43",
+      "price": 420,
+      "description": "Over ear for developer",
+      "image": "overear.jpg"
+    },
+    {
+      "id": 16,
+      "category_id": 14,
+      "title": "Xiaomi in ear",
+      "price": 1000,
+      "description": "In ear Xiaomi",
+      "image": "xiaomi.jpg"
+    },
+    {
+      "id": 17,
+      "category_id": 14,
+      "title": "hwei",
+      "price": 1000,
+      "description": "Phone made by Hwei",
+      "image": "hwei.jpg"
+    },
+    {
+      "id": 18,
+      "category_id": 13,
+      "title": "Natural skin care",
+      "price": 233,
+      "description": "Natural skin care suitable for all skin types",
+      "image": "naturalskin.jpg"
+    },
+    
+    {
+      "id": 19,
+      "category_id": 13,
+      "title": "Jasmine Green Tea",
+      "price": 323,
+      "description": "Green tea care skin",
+      "image": "817IGYnB4DL._AC_UL480_FMwebp_QL65_.webp"
     }
   ]
 }

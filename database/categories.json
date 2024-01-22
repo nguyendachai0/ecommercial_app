@@ -64,6 +64,11 @@
       "id": 13,
       "title": "Skin care",
       "description": "All high quality Skin care product"
+    },
+    {
+      "id": 14,
+      "title": "Tech accessories",
+      "description": "All hight quality technology stuff"
     }
   ]
 }
